@@ -79,7 +79,6 @@ class gradeCalculator
                 Console.WriteLine();
             }
 
-            // Calculate the average grade
             double averageGrade = CalculateAverageGrade(courseGrades);
 
             Console.WriteLine("------------------------");
@@ -104,6 +103,8 @@ class gradeCalculator
         Console.WriteLine("Program ended.");
     }
 
+    
+    // Calculate the average grade
     static double CalculateAverageGrade(Dictionary<string, int> courseGrades)
     {
         int sum = 0;
