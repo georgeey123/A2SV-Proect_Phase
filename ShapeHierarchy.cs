@@ -10,6 +10,7 @@ class Shape {
     }
 }
 
+//Derived Classes
 class Circle : Shape {
     private double PI = Math.PI;
     public double Radius{get; set;}
@@ -41,6 +42,8 @@ class Triangle : Shape {
     }
 
 }
+
+
 class ShapeHierarchy {
     static void PrintShapeArea(Shape shape){
         Console.WriteLine($"Name: {shape.Name}, Area: {shape.CalculateArea()}");
