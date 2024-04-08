@@ -116,3 +116,40 @@ class TaskManager
         }
     }
 }
+class Program
+{
+    static async Task Main(string[] args)
+    {
+        TaskManager taskManager = new TaskManager();
+
+        // Read tasks from CSV file
+        await taskManager.ReadTasksFromCSV();
+
+        // Add new tasks
+        NewTask Task1 = new NewTask { Name = "ExampleTask", Description = "THis is an example 1", Category = TaskCategories.Personal, IsCompleted = false };
+        NewTask Task2 = new NewTask { Name = "PLay Games", Description = "Play video games..", Category = TaskCategories.Work, IsCompleted = false };
+        NewTask Task3 = new NewTask { Name = "Watch Anime", Description = "Continue ongoing anime", Category = TaskCategories.Errands, IsCompleted = false };
+
+        taskManager.AddTask(Task1);
+        taskManager.AddTask(Task2);
+        taskManager.AddTask(Task3);
+
+        Task1.IsCompleted = true;
+        // Display all tasks
+        Console.WriteLine("All Tasks:");
+        taskManager.DisplayTasks(taskManager.Tasks);
+
+        // Display tasks by category
+        Console.WriteLine("\nPersonal Tasks:");
+        taskManager.DisplayTasks(taskManager.FilterTask(TaskCategories.Personal));
+
+        // Write tasks to CSV file
+        await taskManager.WriteTasksToCSV();
+
+        Console.WriteLine("\nTasks written to tasks.csv");
+
+        // Display all tasks after adding new tasks
+        Console.WriteLine("\nAll Tasks after adding new tasks:");
+        taskManager.DisplayTasks(taskManager.Tasks);
+    }
+}
